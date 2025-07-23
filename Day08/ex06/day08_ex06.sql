@@ -1,0 +1,21 @@
+--S1
+BEGIN TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+
+--S1
+BEGIN TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+
+--S1
+SELECT SUM(rating) FROM pizzeria;
+
+--S2
+INSERT INTO pizzeria (id, name, rating) VALUES (11, 'Kazan Pizza 2', 4);
+COMMIT;
+
+--S1
+SELECT SUM(rating) FROM pizzeria;
+COMMIT;
+SELECT SUM(rating) FROM pizzeria;
+
+
+--S2
+SELECT SUM(rating) FROM pizzeria;
